@@ -3,7 +3,7 @@
 <!-- ('', 'zport', 'dmd', 'Devices', 'Network', 'MikroTik') -->
 <object id='/zport/dmd/Devices/Network/MikroTik' module='Products.ZenModel.DeviceClass' class='DeviceClass'>
 <property visible="True" type="lines" id="zCollectorPlugins" >
-['zenoss.snmp.DeviceMap', 'zenoss.snmp.MikroTik', 'zenoss.snmp.InterfaceMap']
+['zenoss.snmp.DeviceMap', 'zenoss.snmp.MikroTik', 'zenoss.snmp.InterfaceMap', 'zenoss.snmp.HRFileSystemMap']
 </property>
 <property visible="True" type="boolean" id="zSnmpMonitorIgnore" >
 False
