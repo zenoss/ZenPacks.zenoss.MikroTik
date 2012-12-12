@@ -36,6 +36,8 @@ class MikroTik(SnmpPlugin):
         os = 'RouterOS %s' % results[0].get('mtxrLicVersion', '')
         os = os.strip()
 
+        device_om = ObjectMap()
+
         hw_om = ObjectMap(compname='hw', data={
             'setProductKey': MultiArgs(model, 'MikroTik'),
             'serialNumber': serial_number,
@@ -46,13 +48,17 @@ class MikroTik(SnmpPlugin):
             'totalSwap': 0,
             })
 
-        for _, row in results[1].get('hrStorageTable', {}).items():
+        for snmpindex, row in results[1].get('hrStorageTable', {}).items():
             if 'memory' not in row.get('hrStorageDescr'):
                 continue
+
+            device_om.snmpindex_dct = {
+                '1.3.6.1.2.1.25.2.3.1.6': snmpindex.strip('.'),
+                }
 
             units = int(row.get('hrStorageAllocationUnits', 1024))
 
             if 'hrStorageSize' in row:
                 hw_om.totalMemory = int(row['hrStorageSize']) * units
 
-        return [hw_om, os_om]
+        return [device_om, hw_om, os_om]
