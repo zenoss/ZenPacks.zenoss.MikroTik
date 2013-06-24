@@ -1,0 +1,34 @@
+This ZenPack can display the following information on the MikroTik router's overview page:
+
+* RouterOS version
+* Device Manufacturer and Model
+* Total Memory
+
+
+Graphs supported by default include:
+
+* CPU Utilization
+* Memory Utilization
+* CPU Temperature (C)
+* DHCP Leases
+* Wireless Users
+* Wireless Signal
+
+
+Each network interface will be discovered and include the following graphs:
+
+* Throughput
+* Packets
+* Errors
+
+
+Each file system will be discovered and include the following graphs:
+
+* Utilization
+
+
+This ZenPack was developed against RouterOS 6.0rc5 and we welcome feedback, testing and additional requests.
+
+== Usage ==
+
+Enable SNMP on your MikroTik device then add it to the /Network/MikroTik device class.
